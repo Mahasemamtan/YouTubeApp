@@ -45,7 +45,11 @@ class YoutubeActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedListen
         youtubePlayer?.setPlaybackEventListener(playbackEventListener)
         youtubePlayer?.setPlayerStateChangeListener(playerStateChangeListener)
 
-        if (!wasRestored) youtubePlayer?.cueVideo(YOUTUBE_VIDEO_ID)
+        if (!wasRestored) {
+            youtubePlayer?.loadVideo(YOUTUBE_VIDEO_ID)
+        } else {
+            youtubePlayer?.play()
+        }
     }
 
     override fun onInitializationFailure(
